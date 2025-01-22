@@ -113,7 +113,7 @@
                             break;
 
                          case"4":
-
+                            EliminarLibro(lista_biblioteca);
                            break;
 
                         case "5":
@@ -280,6 +280,61 @@
 
                 }while (OpcionUltra=="SI");
             }
+
+
+
+            static void EliminarLibro(List<Biblioteca>Lista_biblioteca)
+            {
+                string opcion;
+
+                do
+                {
+                    Console.WriteLine("Quieres eliminar un libro SI/NO?");
+                    opcion = Console.ReadLine();
+
+                    if (opcion == "SI")
+                    {
+
+                        Console.WriteLine("Ingresa el codigo del libro");
+                        int codigo = Convert.ToInt32(Console.ReadLine());
+
+                        Biblioteca biblioteca = Lista_biblioteca.Find(c => c.Codigo == codigo);
+                        if (biblioteca != null)
+                        {
+                            Console.WriteLine($"Libro encontrado:{biblioteca}");
+
+                            Console.WriteLine("Quieres eliminar este libro SI/NO?");
+                            string OpcionMultiple = Console.ReadLine();
+
+                            if (OpcionMultiple == "SI")
+                            {
+                                Lista_biblioteca.Remove(biblioteca);
+                                Console.WriteLine("Libro eliminado exitosamente");
+
+                            }
+
+                            else
+                            {
+                                Console.WriteLine("Operacion cancelada");
+                            }
+
+                        }
+
+                        else
+                        {
+                            Console.WriteLine("ERROR");
+                        }
+
+                    }
+                    else
+                    {
+                        Console.WriteLine("Operacion cancelada");
+                    }
+                    Console.ReadKey();
+
+                }while(opcion=="SI");   
+            }
+
 
 
 
